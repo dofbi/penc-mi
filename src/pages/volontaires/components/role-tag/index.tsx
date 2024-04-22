@@ -1,48 +1,41 @@
 import React, { FC } from "react";
 
-import { CrownOutlined, StarOutlined, UserOutlined } from "@ant-design/icons";
-import { Tag, type TagProps } from "antd";
-
-import { User } from "@/graphql/schema.types";
+import { CrownOutlined, UserOutlined } from "@ant-design/icons";
+import { Tag, TagProps } from "antd";
 
 type Props = {
-  role: User["role"];
+  role: string;
 };
 
 export const RoleTag: FC<Props> = ({ role }) => {
-  const variants: {
-    [key in User["role"]]: {
-      color: TagProps["color"];
-      icon: React.ReactNode;
-    };
-  } = {
+  const variants: Record<string, { color: TagProps["color"]; icon: React.ReactNode }> = {
+    VISITEUR: {
+      color: "green",
+      icon: <UserOutlined />,
+    },
+    VOLONTAIRE: {
+      color: "gold",
+      icon: <UserOutlined />,
+    },
+    ORGANISATION: {
+      color: "blue",
+      icon: <UserOutlined />,
+    },
     ADMIN: {
       color: "red",
       icon: <CrownOutlined />,
     },
-    SALES_INTERN: {
-      color: "blue",
-      icon: <UserOutlined />,
-    },
-    SALES_PERSON: {
-      color: "geekblue",
-      icon: <UserOutlined />,
-    },
-    SALES_MANAGER: {
-      color: "cyan",
-      icon: <StarOutlined />,
-    },
   };
 
-  const text = role.replace("_", " ").toLowerCase();
+  const text = role.toLowerCase(); // Pas besoin de remplacer '_' ici car les valeurs de role ne contiennent pas de soulignement.
 
   return (
     <Tag
       style={{
         textTransform: "capitalize",
       }}
-      color={variants[role].color}
-      icon={variants[role].icon}
+      color={variants[role.toUpperCase()].color}
+      icon={variants[role.toUpperCase()].icon}
     >
       {text}
     </Tag>
