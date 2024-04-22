@@ -1,6 +1,6 @@
 import { AuthBindings } from "@refinedev/core";
 
-import { supabaseClient } from "./utility";
+import { supabaseClient } from "../utility";
 
 const authProvider: AuthBindings = {
   login: async ({ email, password, providerName }) => {
@@ -230,7 +230,8 @@ const authProvider: AuthBindings = {
     if (data?.user) {
       return {
         ...data.user,
-        name: data.user.email,
+        name: data.user.identities[0].identity_data.full_name,
+        avatar: data.user.identities[0].identity_data.avatar_url
       };
     }
 
