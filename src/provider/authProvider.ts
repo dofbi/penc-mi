@@ -228,11 +228,20 @@ const authProvider: AuthBindings = {
     const { data } = await supabaseClient.auth.getUser();
 
     if (data?.user) {
-      return {
-        ...data.user,
-        name: data.user.identities[0].identity_data.full_name,
-        avatar: data.user.identities[0].identity_data.avatar_url
-      };
+
+      const { identities } = data.user;
+
+      if (identities && identities.length > 0) {
+      const identityData = identities[0].identity_data;
+
+      if (identityData) {
+        return {
+          ...data.user,
+          name: identityData.full_name,
+          avatar: identityData.avatar_url
+        };
+      }
+      }
     }
 
     return null;

@@ -11,7 +11,7 @@ import { AccountSettings } from "./account-settings";
 
 export const CurrentUser: React.FC = () => {
   const [opened, setOpened] = useState(false);
-  const { data: user } = useGetIdentity();
+  const { data: user }: { data?: { name: string; avatar: string } } = useGetIdentity() || {};
   const { mutate: logout } = useLogout();
 
   const content = (

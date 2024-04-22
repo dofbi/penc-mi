@@ -97,7 +97,7 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
         <Table.Column
           dataIndex="full_name"
           title="Prénom Nom"
-          render={(_, record) => {
+          render={(_, record:any) => {
             return (
               <div
                 style={{
@@ -106,8 +106,8 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
                   gap: "8px",
                 }}
               >
-                <CustomAvatar src={record.avatar_url} name={record.full_name} />
-                <Text>{record.full_name}</Text>
+                <CustomAvatar src={record?.avatar_url} name={record?.full_name} />
+                <Text>{record?.full_name}</Text>
               </div>
             );
           }}
@@ -120,8 +120,8 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
           <Table.Column
           dataIndex="role"
           title="Rôle"
-          render={(_, record) => {
-            return <RoleTag role={record.role} />;
+          render={(_, record:any) => {
+            return <RoleTag role={record?.role} />;
           }}
         />
       </Table>
