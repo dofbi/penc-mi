@@ -1,0 +1,153 @@
+{
+  "pages": {
+    "login": {
+      "title": "Connectez-vous à votre compte",
+      "signin": "Se connecter",
+      "signup": "S'inscrire",
+      "divider": "ou",
+      "fields": {
+        "email": "Email",
+        "password": "Mot de passe"
+      },
+      "errors": {
+        "validEmail": "Adresse e-mail invalide"
+      },
+      "buttons": {
+        "submit": "Connexion",
+        "forgotPassword": "Mot de passe oublié?",
+        "noAccount": "Vous n'avez pas de compte?",
+        "rememberMe": "Se souvenir de moi"
+      }
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié?",
+      "fields": {
+        "email": "Email"
+      },
+      "errors": {
+        "validEmail": "Adresse e-mail invalide"
+      },
+      "buttons": {
+        "submit": "Envoyer les instructions de réinitialisation"
+      }
+    },
+    "register": {
+      "title": "Inscrivez-vous pour votre compte",
+      "fields": {
+        "email": "Email",
+        "password": "Mot de passe"
+      },
+      "errors": {
+        "validEmail": "Adresse e-mail invalide"
+      },
+      "buttons": {
+        "submit": "S'inscrire",
+        "haveAccount": "Vous avez déjà un compte?"
+      }
+    },
+    "updatePassword": {
+      "title": "Mettre à jour le mot de passe",
+      "fields": {
+        "password": "Nouveau mot de passe",
+        "confirmPassword": "Confirmer le nouveau mot de passe"
+      },
+      "errors": {
+        "confirmPasswordNotMatch": "Les mots de passe ne correspondent pas"
+      },
+      "buttons": {
+        "submit": "Mettre à jour"
+      }
+    },
+    "error": {
+      "info": "Vous avez peut-être oublié d'ajouter le composant {{action}} à la ressource {{resource}}.",
+      "404": "Désolé, la page que vous avez visitée n'existe pas.",
+      "resource404": "Êtes-vous sûr d'avoir créé la ressource {{resource}}.",
+      "backHome": "Retour à l'accueil"
+    }
+  },
+  "actions": {
+    "list": "Liste",
+    "create": "Créer",
+    "edit": "Éditer",
+    "show": "Afficher"
+  },
+  "buttons": {
+    "create": "Créer",
+    "save": "Enregistrer",
+    "logout": "Déconnexion",
+    "delete": "Supprimer",
+    "edit": "Éditer",
+    "cancel": "Annuler",
+    "confirm": "Êtes-vous sûr?",
+    "filter": "Filtrer",
+    "clear": "Effacer",
+    "refresh": "Actualiser",
+    "show": "Afficher",
+    "undo": "Annuler",
+    "import": "Importer",
+    "clone": "Cloner",
+    "notAccessTitle": "Vous n'avez pas la permission d'accéder"
+  },
+  "warnWhenUnsavedChanges": "Êtes-vous sûr de vouloir partir? Vous avez des changements non enregistrés.",
+  "notifications": {
+    "success": "Succès",
+    "error": "Erreur (code de statut: {{statusCode}})",
+    "undoable": "Vous avez {{seconds}} secondes pour annuler",
+    "createSuccess": "Création réussie de {{resource}}",
+    "createError": "Une erreur s'est produite lors de la création de {{resource}} (code de statut: {{statusCode}})",
+    "deleteSuccess": "Suppression réussie de {{resource}}",
+    "deleteError": "Erreur lors de la suppression de {{resource}} (code de statut: {{statusCode}})",
+    "editSuccess": "Édition réussie de {{resource}}",
+    "editError": "Erreur lors de l'édition de {{resource}} (code de statut: {{statusCode}})",
+    "importProgress": "Importation en cours : {{processed}}/{{total}}"
+  },
+  "loading": "Chargement",
+  "tags": {
+    "clone": "Cloner"
+  },
+  "dashboard": {
+    "title": "Tableau de bord"
+  },
+  "posts": {
+    "posts": "Articles",
+    "fields": {
+      "id": "Id",
+      "title": "Titre",
+      "category": "Catégorie",
+      "status": {
+        "title": "Statut",
+        "published": "Publié",
+        "draft": "Brouillon",
+        "rejected": "Rejeté"
+      },
+      "content": "Contenu",
+      "createdAt": "Créé le"
+    },
+    "titles": {
+      "create": "Créer un article",
+      "edit": "Éditer l'article",
+      "list": "Articles",
+      "show": "Afficher l'article"
+    }
+  },
+  "table": {
+    "actions": "Actions"
+  },
+  "documentTitle": {
+    "default": "Dakaractu ElectionHub",
+    "suffix": " | Dakaractu ElectionHub",
+    "post": {
+      "list": "Articles | Dakaractu ElectionHub",
+      "show": "#{{id}} Afficher | Dakaractu ElectionHub",
+      "edit": "#{{id}} Éditer | Dakaractu ElectionHub",
+      "create": "Créer | Dakaractu ElectionHub",
+      "clone": "#{{id}} Cloner | Dakaractu ElectionHub"
+    }
+  },
+  "autoSave": {
+    "success": "enregistré",
+    "error": "échec de l'enregistrement automatique",
+    "loading": "enregistrement en cours...",
+    "idle": "en attente des modifications"
+  }
+}
