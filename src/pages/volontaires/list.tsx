@@ -1,3 +1,10 @@
+import React from "react";
+import { IResourceComponentsProps } from "@refinedev/core";
+import {
+    useTable,
+    EmailField,
+    ImageField,
+} from "@refinedev/antd";
 import {
   EnvironmentOutlined,
   GlobalOutlined,
@@ -6,15 +13,17 @@ import {
   ShopOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
-import { Card, Col, Row, Space } from "antd";
+import { Card, Col, Row, Space, Table } from "antd";
 import cn from "classnames";
 
-import { Text } from "../../components";
+import { CustomAvatar, Text } from "../../components";
 import { AppIcon } from "../../components/app-icon"
 
+import { RoleTag } from "./components";
 import styles from "./settings.module.css";
 
 export const VolontairesPage = () => {
+
   return (
     <div className="page-container">
       <Space
@@ -57,7 +66,10 @@ export const VolontairesPage = () => {
   );
 };
 
-const UsersTable = () => {
+const UsersTable: React.FC<IResourceComponentsProps> = () => {
+  const { tableProps } = useTable({
+    syncWithLocation: true,
+  });
 
   return (
     <Card
@@ -81,7 +93,38 @@ const UsersTable = () => {
         </>
       }
     >
-      Tables
+      <Table {...tableProps} rowKey="id">
+        <Table.Column
+          dataIndex="full_name"
+          title="Prénom Nom"
+          render={(_, record) => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                <CustomAvatar src={record.avatar_url} name={record.full_name} />
+                <Text>{record.full_name}</Text>
+              </div>
+            );
+          }}
+        />
+          <Table.Column
+              dataIndex={["email"]}
+              title="Email"
+              render={(value: any) => <EmailField value={value} />}
+          />
+          <Table.Column
+          dataIndex="role"
+          title="Rôle"
+          render={(_, record) => {
+            return <RoleTag role={record.role} />;
+          }}
+        />
+      </Table>
     </Card>
   );
 };
