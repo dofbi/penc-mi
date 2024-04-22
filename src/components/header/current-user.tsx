@@ -45,7 +45,7 @@ export const CurrentUser: React.FC = () => {
           block
           onClick={() => setOpened(true)}
         >
-          Account settings
+          Paramètres
         </Button>
         <Button
           style={{ textAlign: "left" }}
