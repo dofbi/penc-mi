@@ -1,14 +1,14 @@
 import type { IResourceItem } from "@refinedev/core";
 
-// import {
-//   CalendarOutlined,
-//   ContainerOutlined,
-//   CrownOutlined,
-//   DashboardOutlined,
-//   ProjectOutlined,
-//   ShopOutlined,
-//   TeamOutlined,
-// } from "@ant-design/icons";
+import {
+  // CalendarOutlined,
+  // ContainerOutlined,
+  CrownOutlined,
+  // DashboardOutlined,
+  // ProjectOutlined,
+  // ShopOutlined,
+  // TeamOutlined,
+} from "@ant-design/icons";
 
 export const resources: IResourceItem[] = [
   {
@@ -19,14 +19,23 @@ export const resources: IResourceItem[] = [
       canDelete: true
     },
   },
-  // {
-  //   name: "categories",
-  //   list: "/categories",
-  //   create: "/categories/create",
-  //   edit: "/categories/edit/:id",
-  //   show: "/categories/show/:id",
-  //   meta: {
-  //     canDelete: true,
-  //   },
-  // },
+  {
+    name: "administration",
+    meta: {
+      label: "Administration",
+      icon: <CrownOutlined />,
+    },
+  },
+  {
+    name: "types_volontaire",
+    list: "/administration/volontaires",
+    create: "/administration/volontaires/create",
+    edit: "/administration/volontaires/edit/:id",
+    show: "/administration/volontaires/show/:id",
+    meta: {
+      label: "Types de volontaires",
+      parent: "administration",
+      canDelete: true,
+    },
+  },
 ];
