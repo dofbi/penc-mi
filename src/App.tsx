@@ -19,6 +19,7 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
+// import { AntdInferencer } from "@refinedev/inferencer/antd";
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import authProvider from "./provider/authProvider";
@@ -29,6 +30,11 @@ import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
   VolontairesPage
 } from "./pages/volontaires";
+import {
+  TypesDeVolontaireList,
+  TypesDeVolontaireCreate,
+  TypesDeVolontaireEdit
+} from "./pages/administration/volontaires";
 import { RegisterPage } from "./pages/auth/register";
 import { supabaseClient } from "./utility";
 
@@ -92,12 +98,11 @@ function App() {
                     <Route path="/volontaires">
                       <Route index element={<VolontairesPage />} />
                     </Route>
-                    {/* <Route path="/categories">
-                      <Route index element={<CategoryList />} />
-                      <Route path="create" element={<CategoryCreate />} />
-                      <Route path="edit/:id" element={<CategoryEdit />} />
-                      <Route path="show/:id" element={<CategoryShow />} />
-                    </Route> */}
+                    <Route path="/administration/volontaires">
+                      <Route index element={<TypesDeVolontaireList />} />
+                      <Route path="/administration/volontaires/create" element={<TypesDeVolontaireCreate />} />
+                      <Route path="/administration/volontaires/edit/:id" element={<TypesDeVolontaireEdit />} />
+                    </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
                   <Route
