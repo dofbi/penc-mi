@@ -1,9 +1,12 @@
 import React from "react";
-import { IResourceComponentsProps } from "@refinedev/core";
+import { IResourceComponentsProps, BaseRecord, useTranslate } from "@refinedev/core";
 import {
     useTable,
     EmailField,
     ImageField,
+    EditButton,
+    ShowButton,
+    List
 } from "@refinedev/antd";
 import {
   EnvironmentOutlined,
@@ -30,7 +33,8 @@ export const VolontairesPage = () => {
         size={16}
         style={{
           width: "100%",
-          paddingBottom: "24px",
+          paddingBottom: "20px",
+          marginBottom: "20px",
           borderBottom: "1px solid #D9D9D9",
         }}
       >
@@ -39,6 +43,7 @@ export const VolontairesPage = () => {
           Collectif des Volontaires du Sénégal
         </Text>
       </Space>
+      <List>
       <Row
         gutter={[32, 32]}
         style={{
@@ -62,13 +67,23 @@ export const VolontairesPage = () => {
           <CompanyInfo />
         </Col>
       </Row>
+      </List>
     </div>
   );
 };
 
 const UsersTable: React.FC<IResourceComponentsProps> = () => {
+  const translate = useTranslate();
   const { tableProps } = useTable({
     syncWithLocation: true,
+    sorters: {
+      initial: [
+        {
+          field: "full_name",
+          order: "asc",
+        },
+      ],
+    },
   });
 
   return (
@@ -88,7 +103,7 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
         <>
           <Text className="tertiary">Total : </Text>
           <Text strong>
-            0
+            {tableProps?.pagination?.total}
           </Text>
         </>
       }
@@ -113,9 +128,8 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
           }}
         />
           <Table.Column
-              dataIndex={["email"]}
-              title="Email"
-              render={(value: any) => <EmailField value={value} />}
+              dataIndex={["types_volontaire"]}
+              title="Volontaire"
           />
           <Table.Column
           dataIndex="role"
@@ -123,6 +137,24 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
           render={(_, record:any) => {
             return <RoleTag role={record?.role} />;
           }}
+        />
+        <Table.Column
+            title={translate("table.actions")}
+            dataIndex="actions"
+            render={(_, record: BaseRecord) => (
+                <Space>
+                    <EditButton
+                        hideText
+                        size="small"
+                        recordItemId={record.id}
+                    />
+                    <ShowButton
+                        hideText
+                        size="small"
+                        recordItemId={record.id}
+                    />
+                </Space>
+            )}
         />
       </Table>
     </Card>
