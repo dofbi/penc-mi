@@ -12,7 +12,7 @@ export const TypesDeVolontaireCreate = () => {
     });
 
     return (
-        <Create saveButtonProps={saveButtonProps}>
+        <Create title={"Créer Type"} saveButtonProps={saveButtonProps}>
             <Form {...formProps} layout="vertical">
                 <Form.Item
                     label={translate("Nom")}

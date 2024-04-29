@@ -12,11 +12,19 @@ import { Table, Space } from "antd";
 export const TypesDeVolontaireList = () => {
     const translate = useTranslate();
     const { tableProps } = useTable({
-        syncWithLocation: true
+        syncWithLocation: true,
+        sorters: {
+        initial: [
+            {
+            field: "nom",
+            order: "asc",
+            },
+        ],
+        },
     });
 
     return (
-        <List>
+        <List title={"Types de Volontaires"}>
             <Table {...tableProps} rowKey="nom">
                 <Table.Column
                     dataIndex="nom"

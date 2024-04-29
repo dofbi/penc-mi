@@ -14,7 +14,7 @@ export const TypesDeVolontaireEdit = () => {
     const typesDeVolontairesData = queryResult?.data?.data;
 
     return (
-        <Edit saveButtonProps={saveButtonProps}>
+        <Edit title={"Modifier Type"} saveButtonProps={saveButtonProps}>
             <Form {...formProps} layout="vertical">
                 <Form.Item
                     label={"Nom"}
