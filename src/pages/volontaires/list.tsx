@@ -103,7 +103,7 @@ const UsersTable: React.FC<IResourceComponentsProps> = () => {
         <>
           <Text className="tertiary">Total : </Text>
           <Text strong>
-            {tableProps?.pagination?.total}
+            {tableProps?.pagination && tableProps?.pagination?.total}
           </Text>
         </>
       }
