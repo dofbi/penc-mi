@@ -19,7 +19,7 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
-import { AntdInferencer } from "@refinedev/inferencer/antd";
+// import { AntdInferencer } from "@refinedev/inferencer/antd";
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import authProvider from "./provider/authProvider";
@@ -29,7 +29,9 @@ import { AppIcon } from "./components/app-icon";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-  VolontairesPage
+  VolontairesPage,
+  VolontaireEdit,
+  VolontaireShow
 } from "./pages/volontaires";
 import {
   OrganisationsList,
@@ -111,9 +113,8 @@ function App() {
                       element={<VolontairesPage />}
                     />
                     <Route path="/volontaires">
-                      <Route path="/volontaires/create" element={<AntdInferencer />} />
-                      <Route path="/volontaires/edit/:id" element={<AntdInferencer />} />
-                      <Route path="/volontaires/show/:id" element={<AntdInferencer />} />
+                      <Route path="/volontaires/edit/:id" element={<VolontaireEdit />} />
+                      <Route path="/volontaires/show/:id" element={<VolontaireShow />} />
                     </Route>
                     <Route path="/organisations">
                       <Route index element={<OrganisationsList />} />

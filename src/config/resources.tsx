@@ -14,7 +14,6 @@ export const resources: IResourceItem[] = [
   {
     name: "users",
     list: "/",
-    create: "/volontaires/create",
     edit: "/volontaires/edit/:id",
     show: "/volontaires/show/:id",
     meta: {
