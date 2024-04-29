@@ -13,9 +13,22 @@ import {
 export const resources: IResourceItem[] = [
   {
     name: "users",
-    list: "/volontaires",
+    list: "/",
+    create: "/volontaires/create",
+    edit: "/volontaires/edit/:id",
+    show: "/volontaires/show/:id",
     meta: {
       label: "Volontaires",
+      canDelete: true
+    },
+  },
+  {
+    name: "organisations",
+    list: "/organisations",
+    create: "/organisations/create",
+    edit: "/organisations/edit/:id",
+    show: "/organisations/show/:id",
+    meta: {
       canDelete: true
     },
   },
@@ -31,9 +44,19 @@ export const resources: IResourceItem[] = [
     list: "/administration/volontaires",
     create: "/administration/volontaires/create",
     edit: "/administration/volontaires/edit/:id",
-    show: "/administration/volontaires/show/:id",
     meta: {
-      label: "Types de volontaires",
+      label: "Volontaires",
+      parent: "administration",
+      canDelete: true,
+    },
+  },
+  {
+    name: "types_organisation",
+    list: "/administration/organisations",
+    create: "/administration/organisations/create",
+    edit: "/administration/organisations/edit/:id",
+    meta: {
+      label: "Organisations",
       parent: "administration",
       canDelete: true,
     },
