@@ -1,4 +1,5 @@
 import { AuthBindings } from "@refinedev/core";
+import { useOne, HttpError } from "@refinedev/core";
 
 import { supabaseClient } from "../utility";
 
@@ -216,10 +217,10 @@ const authProvider: AuthBindings = {
     };
   },
   getPermissions: async () => {
-    const user = await supabaseClient.auth.getUser();
+    const { data } = await supabaseClient.auth.getUser();
 
-    if (user) {
-      return user.data.user?.role;
+    if (data?.user) {
+      return data?.user.user_metadata.role
     }
 
     return null;

@@ -1,4 +1,4 @@
-import { Authenticated, Refine, I18nProvider } from "@refinedev/core";
+import { CanAccess, Authenticated, Refine, I18nProvider } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { useTranslation } from "react-i18next";
@@ -19,10 +19,11 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
-// import { AntdInferencer } from "@refinedev/inferencer/antd";
+import { AntdInferencer } from "@refinedev/inferencer/antd";
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import authProvider from "./provider/authProvider";
+import accessControlProvider from "./provider/casbin/accessControlProvider";
 import { resources } from "./config";
 import { AppIcon } from "./components/app-icon";
 import { Header } from "./components/header";
@@ -31,10 +32,21 @@ import {
   VolontairesPage
 } from "./pages/volontaires";
 import {
+  OrganisationsList,
+  OrganisationsCreate,
+  OrganisationsShow,
+  OrganisationsEdit
+} from './pages/organisations'
+import {
   TypesDeVolontaireList,
   TypesDeVolontaireCreate,
   TypesDeVolontaireEdit
 } from "./pages/administration/volontaires";
+import {
+  OrganisationList,
+  OrganisationCreate,
+  OrganisationEdit
+} from './pages/administration/organisations';
 import { RegisterPage } from "./pages/auth/register";
 import { supabaseClient } from "./utility";
 
@@ -54,6 +66,7 @@ function App() {
           <AntdApp>
             <DevtoolsProvider>
               <Refine
+                accessControlProvider={accessControlProvider}
                 i18nProvider={i18nProvider}
                 dataProvider={dataProvider(supabaseClient)}
                 liveProvider={liveProvider(supabaseClient)}
@@ -86,22 +99,37 @@ function App() {
                             />
                           )}
                         >
-                          <Outlet />
+                          <CanAccess>
+                            <Outlet />
+                          </CanAccess>
                         </ThemedLayoutV2>
                       </Authenticated>
                     }
                   >
                     <Route
                       index
-                      element={<NavigateToResource resource="users" />}
+                      element={<VolontairesPage />}
                     />
                     <Route path="/volontaires">
-                      <Route index element={<VolontairesPage />} />
+                      <Route path="/volontaires/create" element={<AntdInferencer />} />
+                      <Route path="/volontaires/edit/:id" element={<AntdInferencer />} />
+                      <Route path="/volontaires/show/:id" element={<AntdInferencer />} />
+                    </Route>
+                    <Route path="/organisations">
+                      <Route index element={<OrganisationsList />} />
+                      <Route path="/organisations/create" element={<OrganisationsCreate />} />
+                      <Route path="/organisations/edit/:id" element={<OrganisationsEdit />} />
+                      <Route path="/organisations/show/:id" element={<OrganisationsShow />} />
                     </Route>
                     <Route path="/administration/volontaires">
                       <Route index element={<TypesDeVolontaireList />} />
                       <Route path="/administration/volontaires/create" element={<TypesDeVolontaireCreate />} />
                       <Route path="/administration/volontaires/edit/:id" element={<TypesDeVolontaireEdit />} />
+                    </Route>
+                    <Route path="/administration/organisations">
+                      <Route index element={<OrganisationList />} />
+                      <Route path="/administration/organisations/create" element={<OrganisationCreate />} />
+                      <Route path="/administration/organisations/edit/:id" element={<OrganisationEdit />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
