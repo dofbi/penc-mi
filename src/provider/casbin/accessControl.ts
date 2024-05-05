@@ -19,6 +19,7 @@ m = g(r.sub, p.sub) && keyMatch(r.obj, p.obj) && regexMatch(r.act, p.act)
 
 export const adapter = new StringAdapter(`
 p, admin, users, (list)|(show)|(edit)
+p, admin, volontaires, (list)|(create)|(show)|(edit)|(delete)
 p, admin, organisations, (list)|(create)|(show)|(edit)|(delete)
 p, admin, administration, list
 p, admin, types_volontaire, (list)|(create)|(edit)|(delete)
