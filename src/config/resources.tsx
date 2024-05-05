@@ -4,7 +4,7 @@ import {
   // CalendarOutlined,
   // ContainerOutlined,
   CrownOutlined,
-  // DashboardOutlined,
+  DashboardOutlined,
   // ProjectOutlined,
   // ShopOutlined,
   // TeamOutlined,
@@ -14,10 +14,21 @@ export const resources: IResourceItem[] = [
   {
     name: "users",
     list: "/",
+    edit: "/users/edit/:id",
+    show: "/users/show/:id",
+    meta: {
+      label: "Tableau de bord",
+      canDelete: true,
+      icon: <DashboardOutlined/>
+    },
+  },
+  {
+    name: "volontaires",
+    list: "/volontaires",
+    create: "/volontaires/create",
     edit: "/volontaires/edit/:id",
     show: "/volontaires/show/:id",
     meta: {
-      label: "Volontaires",
       canDelete: true
     },
   },
