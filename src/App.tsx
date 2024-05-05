@@ -29,7 +29,13 @@ import { AppIcon } from "./components/app-icon";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-  VolontairesPage,
+  UsersPage,
+  UserEdit,
+  UserShow
+} from "./pages/users";
+import { 
+  VolontaireList,
+  VolontaireCreate,
   VolontaireEdit,
   VolontaireShow
 } from "./pages/volontaires";
@@ -110,9 +116,15 @@ function App() {
                   >
                     <Route
                       index
-                      element={<VolontairesPage />}
+                      element={<UsersPage />}
                     />
+                    <Route path="/users">
+                      <Route path="/users/edit/:id" element={<UserEdit />} />
+                      <Route path="/users/show/:id" element={<UserShow />} />
+                    </Route>
                     <Route path="/volontaires">
+                      <Route index element={<VolontaireList />} />
+                      <Route path="/volontaires/create" element={<VolontaireCreate />} />
                       <Route path="/volontaires/edit/:id" element={<VolontaireEdit />} />
                       <Route path="/volontaires/show/:id" element={<VolontaireShow />} />
                     </Route>
