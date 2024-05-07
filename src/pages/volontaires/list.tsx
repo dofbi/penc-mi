@@ -64,7 +64,7 @@ export const VolontaireList = () => {
     });
 
     return (
-        <List title={`Volontaires (${tableProps?.pagination?.total})`}>
+        <List title={`Volontaires (${tableProps?.pagination && tableProps?.pagination?.total})`}>
             <Form {...searchFormProps} layout="inline">
                 <Form.Item name="full_name">
                 <Input placeholder="Rechercher volontaire" />
