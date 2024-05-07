@@ -64,7 +64,7 @@ export const VolontaireList = () => {
     });
 
     return (
-        <List>
+        <List title={`Volontaires (${tableProps?.pagination?.total})`}>
             <Form {...searchFormProps} layout="inline">
                 <Form.Item name="full_name">
                 <Input placeholder="Rechercher volontaire" />
@@ -101,7 +101,7 @@ export const VolontaireList = () => {
                 <Table.Column
                     dataIndex={["organisation"]}
                     title={translate("Organisation")}
-                    render={(_, record: BaseRecord) => (record.organisations.nom)}
+                    render={(_, record: BaseRecord) => (record?.organisations?.nom)}
                     filterDropdown={(props) => (
                     <FilterDropdown {...props}>
                         <Select
